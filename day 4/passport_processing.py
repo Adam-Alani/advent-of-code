@@ -1,15 +1,6 @@
 keys = ['byr' , 'iyr' , 'eyr' , 'hgt' , 'hcl' , 'ecl' , 'pid']
 data = [row.strip() for row in open('input.txt').readlines()]
 
-def puzzle1(passports):
-    count = 0
-    for i in passports:
-        checki = ''.join(e for e in i if e.isalnum())
-        if all(x in checki for x in keys):
-            count += 1
-    return count
-
-
 def convert_to_dict(data):
     passport = {}
     passports = []
