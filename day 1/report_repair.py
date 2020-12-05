@@ -1,6 +1,5 @@
 data = open('input.txt', 'r').read().split('\n')
 data = list(map(int, data))
-
 def report(entries):
     hash = {}
     for i in range(len(entries)):

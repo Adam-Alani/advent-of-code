@@ -8,7 +8,6 @@ def validpass(data):
         range1 = re.split(r"([a-z])", data[i], 1, flags=re.I)[0].split("-")
         range1 = list(map(int, range1))
         stc , str1 = re.split(r"([a-z])", data[i], 1, flags=re.I)[1:]
-
         if range1[0] <= str1.count(stc) <= range1[1]:
             res += 1
     return res
