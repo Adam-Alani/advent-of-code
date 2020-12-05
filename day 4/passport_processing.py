@@ -1,6 +1,5 @@
 keys = ['byr' , 'iyr' , 'eyr' , 'hgt' , 'hcl' , 'ecl' , 'pid']
 data = [row.strip() for row in open('input.txt').readlines()]
-
 def convert_to_dict(data):
     passport = {}
     passports = []
