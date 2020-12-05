@@ -2,7 +2,6 @@ import re
 data = open('input.txt', 'r').read().split('\n')
 data = list(data)
 
-test = ['1-3 a: abcde' , '1-3 b: cdefg' , '2-9 c: ccccccccc']
 def validpass(data):
     res = 0
     for i in range(len(data)):
@@ -30,5 +29,3 @@ def validpos(data):
         if c == 1:
             res += 1
     return res
-
-print(validpos(data))
