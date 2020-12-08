@@ -1,7 +1,5 @@
 import re
-data = open('input.txt', 'r').read().split('\n')
-data = list(data)
-
+data = list(open('input.txt', 'r').read().split('\n'))
 def validpass(data):
     res = 0
     for i in range(len(data)):
