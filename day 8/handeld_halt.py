@@ -8,8 +8,7 @@ def halt(data):
             return(acc)
         passed.add(i) 
         step, val = data[i].split()
-        val = int(val)
-            
+        val = int(val)     
         if step == "jmp":
             i += val
         elif step == "acc":
