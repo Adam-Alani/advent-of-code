@@ -1,8 +1,4 @@
-import re
-data = open('input.txt').read().split('\n')
-data = list(data)
-
-
+data = list(open('input.txt').read().split('\n'))
 def halt(data):
     acc = 0
     i = 0
@@ -21,8 +17,6 @@ def halt(data):
             i += 1
         elif step == "nop":
             i += 1
-
-
 def secondHalt(data):
     acc = 0
     i = 0
@@ -32,7 +26,6 @@ def secondHalt(data):
             return(acc)
         if i in passed:
             return None
-
         passed.add(i) 
         step, val = data[i].split()
         val = int(val)
@@ -44,7 +37,6 @@ def secondHalt(data):
             i += 1
         elif step == "nop":
             i += 1
-
 def backTrack(data):
     for i in range(len(data)):
         copy = data[:]
@@ -55,7 +47,3 @@ def backTrack(data):
         res = secondHalt(copy)
         if res:
             return(res)
-
-
-        
-print(backTrack(data))
