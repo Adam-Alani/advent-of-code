@@ -1,6 +1,5 @@
 with open("input.txt") as inputs:
     group = [row for row in inputs.read()[:-1].split("\n")]
-
 total = 0
 set = {}
 c = 0
@@ -18,5 +17,3 @@ for line in group:
                 total += 1
         c =0
         set = {}
-print(total)
-
