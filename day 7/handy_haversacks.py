@@ -1,5 +1,4 @@
 data = [row.rstrip() for row in open('input.txt').readlines()]
-
 bagdict = {}
 def parse(data):
     for row in data:
@@ -13,7 +12,6 @@ def parse(data):
                 outsidedict[words[1] + ' ' + words[2]] = int(words[0])
         bagdict[outside[0]] = outsidedict
     return bagdict
-
 bagdict = parse(data)
 def puzzle1(bagdict):
     bag_to_find = set(['shiny gold'])
@@ -26,8 +24,5 @@ def puzzle1(bagdict):
                 bag_to_find.add(key)
     print(len(bag_to_find))
     pass
-
 def puzzle2(color):
     return 1 + sum(puzzle2(sub_c) * bagdict[color][sub_c] for sub_c in bagdict[color])
-
-
