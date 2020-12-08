@@ -15,7 +15,6 @@ def convert_to_dict(data):
     if passport:
         passports.append(passport)
     return passports
-
 passports = convert_to_dict(data)
 def puzzle2(passports):
     count = 0
@@ -24,7 +23,6 @@ def puzzle2(passports):
             if valid(passport):
                 count += 1
     return count
-
 def valid(passport):
     if 1920 <= int(passport['byr']) <= 2002:
         if 2010 <= int(passport['iyr']) <= 2020:
@@ -35,6 +33,3 @@ def valid(passport):
                             if passport['pid'].isdigit() and len(passport['pid']) == 9:
                                 return True
     return False
-
-
-
