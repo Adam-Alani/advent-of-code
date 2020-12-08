@@ -1,3 +1,5 @@
+//Draft, Doesnt work yet 
+
 package main
 
 import (
