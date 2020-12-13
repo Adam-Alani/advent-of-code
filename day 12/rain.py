@@ -2,7 +2,6 @@ dir = ((1, 0), (0, -1), (-1, 0), (0, 1))
 pos = 10,1
 curr = 0
 ship = 0, 0
-
 for row in open('input.txt').readlines():
     inst , val = row[0] , int(row[1:])
     if inst == "E":
@@ -36,14 +35,4 @@ for row in open('input.txt').readlines():
                 pos = (-x, -y)
             if 360 - val == 270:
                 pos = (-y, x)
-
-print(pos)
 print(sum(map(abs, ship)))
-
-
-
-
-
-
-
-
