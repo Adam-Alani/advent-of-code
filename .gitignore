@@ -21,9 +21,4 @@ Cargo.lock
 *.exe
 .idea
 
-# no extension files
-*
-!/**/
-!*.*
-
 *.txt
