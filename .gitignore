@@ -20,3 +20,10 @@ Cargo.lock
 *.pdb
 *.exe
 .idea
+
+# no extension files
+*
+!/**/
+!*.*
+
+*.txt
