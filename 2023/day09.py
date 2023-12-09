@@ -16,7 +16,6 @@ def f1(lines):
         new[i][0] = new[i][1] - new[i + 1][0]
     return new[0][0]
 
-
 sum = 0
 for l in data:
     l = [int(x) for x in l.split(' ')]
