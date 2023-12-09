@@ -1,31 +1,16 @@
 from aocd import data
-
 data = data.split('\n')
-
-
-def diff(line):
-    new_line = []
-    for i in range(len(line) - 1):
-        new_line.append(line[i + 1] - line[i])
-    return new_line
-
 
 def f1(lines):
     i = 0
     while i < len(lines):
-        diff_line = diff(lines[i])
+        diff_line = [lines[i][j + 1] - lines[i][j] for j in range(len(lines[i]) - 1)]
+        lines.append(diff_line)
         if all([x == 0 for x in diff_line]):
-            lines.append(diff_line)
             break
-        else:
-            lines.append(diff_line)
-        i = (i + 1) % len(lines)
-    new = []
-    for line in lines:
-        line.insert(0, 0)
-        # line.append(0)
-        # line = line[::-1]
-        new.append(line)
+        i += 1
+    # new = [[0] + list(reversed(line)) for line in lines]
+    new = [[0] + line for line in lines]
     for i in range(len(new) - 2, -1, -1):
         # new[i][0] = new[i][1] + new[i+1][0]
         new[i][0] = new[i][1] - new[i + 1][0]
