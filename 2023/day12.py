@@ -1,5 +1,4 @@
 import functools
-
 from aocd import data
 from utils import *
 data = data.strip().split('\n')
@@ -30,9 +29,11 @@ def get_arrangements(p, d):
         return count
     return get(p, len(p), tuple(d))
 
-
+import time
+start = time.time()
 res = 0
 for gear, p in zip(gears, pos):
     # res += get_arrangements(gear,p)
-    res += get_arrangements('?'.join((gear,gear,gear,gear,gear)),p*5)
+    res += get_arrangements('?'.join([gear] * 5), p*5)
+print(time.time() - start)
 print(res)
