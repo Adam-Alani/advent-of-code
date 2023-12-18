@@ -15,15 +15,14 @@ def simulate_dig_plan(dig_plan):
         action = hex[-1]
         dir = hex[:-1]
         dir, action = int(dir,16),  int(action,16)
-        for _ in range(dir):
-            if action == 0:
-                x += 1
-            elif action == 2:
-                x -= 1
-            elif action == 3:
-                y += 1
-            elif action == 1:
-                y -= 1
+        if action == 0:
+            x += dir
+        elif action == 2:
+            x -= dir
+        elif action == 3:
+            y += dir
+        elif action == 1:
+            y -= dir
         coords.append((x,y))
 
     def area():
