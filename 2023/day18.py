@@ -28,17 +28,17 @@ def simulate_dig_plan(dig_plan):
 
     def area():
         sum = 0
-        shoe_lace = 0
+        perim = 0
         for i in range(len(coords)):
             n_1 = coords[i]
             n_2 = coords[(i + 1) % len(coords)]
             x_1, y_1 = n_1
             x_2, y_2 = n_2
             sum += x_1 * y_2 - y_1 * x_2
-            shoe_lace += abs(x_2 - x_1) + abs(y_2 - y_1)
-        return abs(sum / 2), shoe_lace
-    area, boundary = area()
+            perim += abs(x_2 - x_1) + abs(y_2 - y_1)
+        return abs(sum / 2), perim
+    area, perim = area()
     # picks + bounds + 1 as they arent included in shoelace
-    return int(area-boundary/2 + boundary + 1)
+    return int(area-perim/2 + perim + 1)
 
 print(simulate_dig_plan(dig_plan))
