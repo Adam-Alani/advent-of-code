@@ -14,9 +14,7 @@ def simulate_dig_plan(dig_plan):
     for action, dir, hex in dig_plan:
         hex = hex[2:]
         hex = hex[:-1]
-        action = hex[-1]
-        dir = hex[:-1]
-        dir, action = int(dir, 16), int(action, 16)
+        action, dir = int(hex[-1],16), int(hex[:-1], 16)
         if action == 0:
             x += dir
         elif action == 2:
@@ -30,7 +28,5 @@ def simulate_dig_plan(dig_plan):
 
     area = utils.shoelace(coords)
     # picks + bounds + 1 as they arent included in shoelace
-    return int(area - p / 2 + p + 1)
-
-
+    return int(area + p/2 + 1)
 print(simulate_dig_plan(dig_plan))
