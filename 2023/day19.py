@@ -1,7 +1,6 @@
 from aocd import data
 data = data.strip().split('\n')
 workflows, ratings = {}, []
-curr = "in"
 rate = False
 for line in data:
     if line == "":
@@ -63,16 +62,18 @@ def get_ranges(rng, gt, val):
         return tuple(filter(lambda x: x > val, rng))
     return tuple(filter(lambda x: x < val, rng))
 
-def p2(x,m,a,s,curr):
+def p2(x, m, a, s, curr):
     if curr == "R":
         return 0
     elif curr == "A":
         return len(x) * len(m) * len(a) * len(s)
 
+    variables = {"x": x, "m": m, "a": a, "s": s}
     rules, res = workflows[curr], 0
+
     for rule in rules:
         if ":" in rule:
-            condition, next = rule.split(":")
+            condition, next_state = rule.split(":")
             condition = condition.replace("{", "").replace("}", "")
 
             gt = False
@@ -84,28 +85,17 @@ def p2(x,m,a,s,curr):
                 val = int(val)
                 gt = True
 
-            if var == "x":
-                new_x = get_ranges(x, gt, val)
-                if len(new_x) != 0:
-                    res += p2(new_x, m, a, s, next)
-                x = get_ranges(x, not gt, val + 1 if gt else val - 1)
-            elif var == "m":
-                new_m = get_ranges(m, gt, val)
-                if len(new_m) != 0:
-                    res += p2(x, new_m, a, s, next)
-                m = get_ranges(m, not gt,  val + 1 if gt else val - 1 )
-            elif var == "a":
-                new_a = get_ranges(a, gt, val)
-                if len(new_a) != 0:
-                    res += p2(x, m, new_a, s, next)
-                a = get_ranges(a, not gt, val + 1 if gt else val - 1)
-            elif var == "s":
-                new_s = get_ranges(s, gt, val)
-                if len(new_s) != 0:
-                    res += p2(x, m, a, new_s, next)
-                s = get_ranges(s, not gt, val + 1 if gt else val - 1)
+            current_variable = variables[var]
+            new_variable = get_ranges(current_variable, gt, val)
+
+            if len(new_variable) != 0:
+                variables[var] = new_variable
+                res += p2(**variables, curr=next_state)
+
+            variables[var] = get_ranges(current_variable, not gt, val + 1 if gt else val - 1)
         else:
-            res += p2(x, m, a, s, rule)
+            res += p2(**variables, curr=rule)
+
     return res
 
 print(p2(
