@@ -29,11 +29,9 @@ def drop(bricks):
             else:
                 break
 
-        for block in brick:
-            updated.add(block)
+        updated.update(brick)
         final.append(brick)
-        if dropped:
-            fell += 1
+        fell += dropped
 
     return final, fell
 
@@ -41,6 +39,8 @@ final, fell = drop(bricks)
 
 p1 = 0
 p2 = 0
+import time
+start = time.time()
 for i in range(len(final)):
     changed = final.copy()
     changed.pop(i)
@@ -48,6 +48,7 @@ for i in range(len(final)):
     if fell == 0:
         p1 += 1
     p2 += fell
-
+end = time.time()
+print(end-start)
 print(p1)
 print(p2)
